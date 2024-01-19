@@ -9,14 +9,14 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 
-public class Client {
+public class  Client {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         Value v = new Value();
-        Lock lock = new ReentrantLock();
+        Lock lock = new ReentrantLock();  // there are different types of lock in java
         Adder a = new Adder(v,lock);
         Substructor s = new Substructor(v,lock);
 
-        ExecutorService ec = Executors.newCachedThreadPool();
+        ExecutorService ec = Executors.newCachedThreadPool(); // we are using thread pool
 
         Future<Void> addFu = ec.submit(a);
         Future<Void> subFu = ec.submit(s);
