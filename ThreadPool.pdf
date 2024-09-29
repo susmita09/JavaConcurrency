@@ -1,1 +1,3 @@
-
+A thread pool is a collection of pre-instantiated, reusable threads that are managed by a system to handle multiple tasks 
+concurrently. Instead of creating and destroying threads for every task, the thread pool allows tasks to be queued and 
+executed by a limited number of threads, thus optimizing resource utilization.
