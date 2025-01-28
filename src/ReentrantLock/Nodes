@@ -1,0 +1,14 @@
+ReentrantLock is java is a lock that allows the thread that hols the lock to re-enter or reacquire the same lock with out
+blocking . This is useful when a thread need to lock multiple times in the same execution flow.
+
+
+
+Explanation:
+Reentrant Lock Behavior:
+
+In the increment method, the lock is acquired using lock.lock().
+Inside increment, the method nestedIncrement is called, which also acquires the same lock.
+Since the same thread is re-entering the lock, it succeeds in reacquiring it.
+Thread Safety:
+
+The ReentrantLock ensures only one thread can modify the counter at a time.
