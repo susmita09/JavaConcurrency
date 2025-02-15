@@ -11,6 +11,7 @@ public class client {
     public static void main(String[] args){
         System.out.println(Thread.currentThread().getName());
 
+
         //anonymous class
         Runnable r = new Runnable() {
             @Override
@@ -21,12 +22,12 @@ public class client {
         Thread t = new Thread(r);
 
 
-        Comparator<Integer> com = new Comparator<Integer>() {
-            @Override
-            public int compare(Integer integer, Integer t1) {
-                return 0;
-            }
-        };
+//        Comparator<Integer> com = new Comparator<Integer>() {
+//            @Override
+//            public int compare(Integer integer, Integer t1) {
+//                return 0;
+//            }
+//        };
 
         //lambda expression is valid only for functional interface
         //we only need to pass function parameters and body of the function
@@ -37,9 +38,9 @@ public class client {
         };
 
         //comparator lambda
-        Comparator<Integer> c1 = (o1,o2) ->{
-            return o1 - o2;
-        };
+////        Comparator<Integer> c1 = (o1,o2) ->{
+//            return o1 - o2;
+//        };
 
         Thread t2 = new Thread(()->{
             System.out.println("Hello from thread 2");
@@ -60,7 +61,7 @@ public class client {
         int x = Math.max(3,5);
 
 
-//        java streams
+//        java streams   FLATMAP example
 
         List<List<Integer>> arr1 = Arrays.asList(
                 Arrays.asList(1,2,3),
@@ -69,6 +70,8 @@ public class client {
         );
         System.out.println(arr1);
         //we want the above list of list as a single list
+        List<Integer> arr2 = arr1.stream()
+                .flatMap((List<Integer> a) -> a.stream()).collect(Collectors.toList());
 
         List<Integer> arr = arr1.stream().flatMap( List :: stream
         ).collect(Collectors.toList());
@@ -86,6 +89,9 @@ public class client {
         //intermidate operations
 //        filter - use when you only need to keep spacific element based on some condition
         List<Integer> numbers = List.of(1,2,3,4,5,6,7,8,8,9,10,10,9);
+
+        int sum = numbers.stream().
+                map(n -> n*2).reduce(0, (currSum, ele) -> currSum+ele);
 
         Stream<Integer> st1 = numbers.stream().filter(num -> num%2 == 0); //keep only even numbers
 

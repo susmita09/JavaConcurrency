@@ -1,5 +1,9 @@
 package Synchronized_MonitorLock;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Intrinsiclock {
     public static void main(String[] args) throws InterruptedException{
         Counter counter = new Counter();
@@ -25,5 +29,8 @@ public class Intrinsiclock {
         t1.join();
         t2.join();
         System.out.println(counter.getCount());
+
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
     }
 }
